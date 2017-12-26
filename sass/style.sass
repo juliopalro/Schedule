@@ -1,0 +1,162 @@
+$left: 60px
+
+.content-schedule *, .content-schedule *::after, *::before
+  box-sizing: border-box
+
+.content-schedule
+  position: relative
+  padding: 0
+  margin: 0
+  overflow: hidden
+  ul
+    list-style: none
+    padding: 0
+  .timeline-schedule /* lista para las horas del día */
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    padding-top: 68px
+    padding-left: 1px
+    ul.hours /**/
+      li /* hora en formato 24 horas */
+        position: relative
+        height: 60px
+        &::after, &:nth-child(1)::before
+          left: $left
+          content: ''
+          position: absolute
+          height: 1px
+          width: 100%
+          background: #666
+        &::after
+          bottom: 0
+        &:nth-child(1)::before
+          top: 0
+        &:last-of-type::after
+          display: none
+        span
+          display: inline-block
+          transform: translateY(-50%)
+          font-weight: bold
+        &:nth-of-type(2n) span
+          font-weight: normal
+          color: #d8d8d8
+  .week /* semana */
+    position: relative
+    z-index: 1
+    ul.weekdays /* días de la semana */
+      margin-left: $left
+      li.weekday /* día de la semana */
+        width: calc(100%/7)
+        float: left
+        margin-bottom: 30px
+        position: relative
+        .name-day /* nombre del día de la semana */
+          width: 100%
+          padding: 0 5%
+          text-align: center
+          border-bottom: 4px solid #EAEAEA
+          span
+            display: inline-block
+            padding: 10px
+            font-weight: bold
+
+        ul.courses /* lista de cursos en el día */
+          border: 1px solid #EAEAEA
+          position: relative
+          top: 14px;
+          width: 100%
+          li.course /* curso que se lleva en unas horas */
+            border: 1px solid #999
+            background-color: #eee
+            width: 101%
+            position: absolute
+            display: table
+            p /* contenedor de los datos del curso */
+              font-size: 10px
+              padding: 0 5px
+              margin: 2px 0
+              color: #111
+              overflow: hidden
+              display: table-cell
+              vertical-align: middle
+              width: 100%
+              text-align: center
+              .course-times, .course-name
+                display: block
+                font-weight: bold
+              span.course-times /* tiempos de inicio y fin */
+                color: #333
+                font-size: 1.4rem
+                opacity: .7
+                line-height: 1.2
+                margin-bottom: .2em
+                margin-top: .5em
+              em.course-name /* nombre del curso */
+                font-size: 12px
+
+
+@media only screen and (max-width: 1000px)
+  .content-schedule
+    .timeline-schedule
+      display: none
+    .week
+      ul.weekdays
+        li.weekday
+          margin-bottom: 20px
+          width: 100%
+          border: 1px solid #999
+          height: auto
+          ul.courses
+            position: relative
+            display: flex
+            overflow-x: scroll
+            height: auto !important
+            top: 0
+            li.course
+              position: initial
+              height: 150px !important
+              flex-shrink: 0
+              float: left
+              width: 70%
+              max-width: 300px
+              margin-left: 20px
+
+@media only screen and (max-width: 1220px)
+  .content-schedule
+    .timeline-schedule
+      padding-left: 0
+      ul.hours /**/
+        li /* hora en formato 24 horas */
+          &::after, &:nth-child(1)::before
+            left: 0
+          span
+            display: none
+    .week
+      ul.weekdays
+        margin-left: 0
+
+@media print
+  .content-schedule
+    .timeline-schedule
+      padding-left: 0
+      ul.hours /**/
+        li /* hora en formato 24 horas */
+          &::after, &:nth-child(1)::before
+            left: 0
+          span
+            display: none
+    .week
+      ul.weekdays
+        margin-left: 0
+        li.weekday
+          ul.courses
+            // height: auto !important // estilo para verse en 1 pagina
+            li.course
+              // position: initial // estilo para verse en 1 pagina
+              p
+                em
+                  font-size: 9px !important

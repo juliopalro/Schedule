@@ -1,0 +1,46 @@
+@mixin border-radius($radius: .25em)
+  border-radius: $radius
+  -ms-border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+
+@mixin border-radius-top($radius)
+  border-top-left-radius: $radius
+  -ms-border-top-left-radius: $radius
+  -moz-border-top-left-radius: $radius
+  -webkit-border-top-left-radius: $radius
+  border-top-right-radius: $radius
+  -ms-border-top-right-radius: $radius
+  -moz-border-top-right-radius: $radius
+  -webkit-border-top-right-radius: $radius
+
+
+/*Estilos para schedule*/
+$small: 550px
+$medium: 1220px
+$large: 1400px
+
+@mixin mediaQuery($size)
+  @if $size == S
+   @media only screen and (max-width: $medium)
+    @content
+  @else if $size == M
+   @media only screen and (min-width: $medium)
+    @content
+  @else if $size == L
+   @media only screen and (min-width: $large)
+    @content
+
+@mixin column($percentage, $float-direction:left)
+  width: 100% * $percentage
+  float: $float-direction
+
+@mixin font-smoothing
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+@mixin clearfix
+  &::after
+    clear: both
+    content: ""
+    display: block
