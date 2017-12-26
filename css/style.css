@@ -136,5 +136,9 @@
       display: none; }
   .content-schedule .week ul.weekdays {
     margin-left: 0; }
-    .content-schedule .week ul.weekdays li.weekday ul.courses li.course p em {
-      font-size: 9px !important; } }
+    .content-schedule .week ul.weekdays li.weekday ul.courses {
+      height: auto !important; }
+      .content-schedule .week ul.weekdays li.weekday ul.courses li.course {
+        position: initial; }
+        .content-schedule .week ul.weekdays li.weekday ul.courses li.course p em {
+          font-size: 9px !important; } }
